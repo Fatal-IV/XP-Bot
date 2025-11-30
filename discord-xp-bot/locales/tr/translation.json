@@ -1,0 +1,160 @@
+{
+  "common": {
+    "noPermission": "Bu komutu kullanmak için yetkiniz yok.",
+    "commandError": "Bu komutu çalıştırırken bir hata oluştu.",
+    "timeout": "Zamanında yanıt vermediniz. İşlem iptal edildi.",
+    "yes": "Evet",
+    "no": "Hayır",
+    "cooldown": "Bu komutu tekrar kullanmak için lütfen {{seconds}} saniye bekleyin.",
+    "setupRequired": "⚠️ Bu sunucuda seviye sistemi henüz kurulmamış. Komutları kullanmak için bir yetkilinin `/setup` işlemini yapması gerekmektedir.",
+    "channel": "Kanal",
+    "role": "Rol",
+    "none": "Yok",
+    "notSet": "Ayarlanmamış"
+  },
+  "events": {
+    "guildCreate": {
+      "setupDM": "Merhaba! Beni **{{guildName}}** sunucusuna eklediğiniz için teşekkürler.\n\nBaşlamak için lütfen sunucunuza gidin ve seviye sistemini yapılandırmak için `/setup` yazın.",
+      "setupPublic": "Merhaba {{ownerTag}}! Seviye botunu kullanmaya başlamak için lütfen `/setup` yazın."
+    },
+    "levelUp": {
+      "message": "🎉 Tebrikler, {{user}}! {{level}}. seviyeye ulaştın!"
+    }
+  },
+  "commands": {
+    "rank": {
+      "description": "Sizin veya başka bir kullanıcının seviye kartını gösterir.",
+      "options": {
+        "user": "Seviyesini görmek istediğiniz kullanıcı."
+      },
+      "noData": "Henüz hiç XP'niz yok. XP kazanmak için sohbete başlayın!",
+      "userNotFound": "Bu kullanıcı sunucuda bulunamadı.",
+      "cardError": "Seviye kartı oluşturulurken bir hata oluştu.",
+      "isBot": "🤖 Botların seviye kartı olmaz."
+    },
+    "top": {
+      "description": "Sunucunun en çok XP kazanan kullanıcılarını listeler.",
+      "options": {
+        "page": "Görüntülemek istediğiniz sayfa numarası.",
+        "period": "Sıralama süresi (Tüm Zamanlar, Aylık, Haftalık, Günlük)."
+      },
+      "title": "{{guildName}} Sunucusu Liderlik Tablosu",
+      "footer": "Sayfa {{page}}",
+      "noData": "Sayfa {{page}} için veri bulunamadı.",
+      "allTimeTypeError": "Tüm zamanlar liderlik tablosu sadece 'Toplam XP' türünü destekler.",
+      "heavyQueryCooldown": "Bu komut (Aylık/Haftalık/Günlük) şu anda sunucu genelinde bekleme süresindedir. Lütfen {{seconds}} saniye sonra tekrar deneyin."
+    },
+    "setup": {
+      "description": "XP botu için ilk kurulumu başlatır (Log kanalı vb.).",
+      "title": "Kurulum Sihirbazı",
+      "startPrompt": "Seviye sistemi kurulum sihirbazına hoş geldiniz.\n\nBu sihirbaz, seviye atlama mesajlarının gönderileceği kanalı ve metin XP'si kazanmak için gereken bekleme süresini (cooldown) ayarlamanızı sağlayacaktır.\n\nKuruluma devam etmek istiyor musunuz?",
+      "cancelled": "Kurulum iptal edildi.",
+      "askChannel": "Lütfen seviye atlama ve test mesajlarının gönderileceği **metin kanalını** etiketleyin (örn: #seviyeler).",
+      "invalidChannel": "Bu geçerli bir metin kanalı değil. Kurulum iptal edildi.",
+      "askCooldown": "Mesaj (Metin) XP bekleme süresini belirleyin (Önerilen: {{default}} saniye).\nℹ️ **Not:** Ses XP sistemi bu ayardan bağımsızdır ve otomatik olarak 2.5 dakikada bir verilir.",
+      "invalidCooldown": "Bu geçerli bir sayı değil (minimum 10sn). Kurulum iptal edildi.",
+      "success": "Kurulum tamamlandı! Bot şimdi aktif.",
+      "testMessage": "{{user}} {{channel}} başarıyla ayarlandı (Bu bir test mesajıdır)",
+      "testMessageError": "Kurulum kaydedildi, ancak test mesajını gönderemedim. Lütfen log kanalındaki izinlerimi kontrol edin."
+    },
+    "setlog": {
+      "description": "Seviye atlama bildirimleri için kanalı ayarlar.",
+      "options": {
+        "channel": "Bildirimlerin gönderileceği metin kanalı."
+      },
+      "success": "Seviye atlama log kanalı {{channel}} olarak ayarlandı."
+    },
+    "setcooldown": {
+      "description": "Metin XP'si kazandıktan sonraki bekleme süresini (saniye) ayarlar.",
+      "options": {
+        "seconds": "Saniye cinsinden bekleme süresi (min 10)."
+      },
+      "success": "Metin XP bekleme süresi {{seconds}} saniye olarak ayarlandı."
+    },
+    "setlevelrole": {
+      "description": "Belirli bir seviyede verilecek rolü ayarlar.",
+      "options": {
+        "level": "Ulaşılması gereken seviye.",
+        "role": "Kazanılacak rol."
+      },
+      "success": "{{role}} rolü artık {{level}}. seviyede verilecek.",
+      "hierarchyError": "Bu rolü veremem çünkü benim rolümden daha yüksek. Lütfen bot rolümü ödül rolünün üzerine taşıyın."
+    },
+    "setlevel": {
+      "description": "Bir kullanıcının seviyesini manuel olarak ayarlar.",
+      "options": {
+        "user": "Seviyesini ayarlamak istediğiniz kullanıcı.",
+        "level": "Ayarlamak istediğiniz yeni seviye."
+      },
+      "0error": "Seviye negatif veya 0 olamaz.",
+      "500error": "Seviye 500'ü geçemez.",
+      "success": "{{user}} kullanıcısının seviyesi {{oldLevel}} seviyesinden {{newLevel}} seviyesine başarıyla ayarlandı.",
+      "isBot": "Botların seviyesini ayarlayamazsınız."
+    },
+    "resetxp": {
+      "description": "Bu sunucudaki TÜM XP ve seviye verilerini sıfırlar.",
+      "confirmMessage": "DİKKAT! Bu sunucudaki TÜM kullanıcıların XP ve seviye verilerini kalıcı olarak sıfırlamak üzeresiniz. Bu işlem geri alınamaz. Emin misiniz?",
+      "confirmButton": "EVET, TÜMÜNÜ SIFIRLA",
+      "cancelled": "Sıfırlama işlemi iptal edildi.",
+      "loading": "Sıfırlanıyor...",
+      "success": "Bu sunucudaki tüm XP ve seviye verileri sıfırlandı.",
+      "error": "XP sıfırlanırken bir hata oluştu."
+    },
+    "help": {
+      "description": "Mevcut komutların listesini görüntüler.",
+      "options": {
+        "command": "Belirli bir komut hakkında detaylı bilgi al."
+      },
+      "title": "Yardım Menüsü",
+      "description": "Botta bulunan tüm komutların bir listesi aşağıdadır.",
+      "footer": "Bir komut hakkında detaylı bilgi için /help command: [komut_adı] kullanın.",
+      "notFound": "Böyle bir komut bulunamadı.",
+      "noDescription": "Açıklama mevcut değil.",
+      "publicTitle": "Kullanıcı Komutları",
+      "adminTitle": "Yönetici Komutları",
+      "category": "Kategori",
+      "adminCategory": "Yönetici",
+      "publicCategory": "Kullanıcı",
+      "options": "Parametreler",
+      "noOptions": "Bu komut herhangi bir parametre almaz."
+    },
+    "xp-ignore": {
+      "description": "Belirli kanal veya roller için XP kazanımını kapatır/açar.",
+      "missingSelection": "❌ Lütfen bir **Kanal** veya bir **Rol** seçin.",
+      "added": "✅ **{{target}}** ({{type}}) başarıyla yasaklı listesine eklendi. Artık XP kazanılmayacak.",
+      "removed": "✅ **{{target}}** ({{type}}) üzerindeki yasak kaldırıldı. Artık XP kazanılabilir."
+    },
+    "settings": {
+      "description": "Sunucunun mevcut XP ve Seviye ayarlarını gösterir.",
+      "title": "⚙️ {{guildName}} - Sunucu Ayarları",
+      "logChannel": "Log Kanalı",
+      "cooldown": "Metin Cooldown",
+      "seconds": "{{sec}} Saniye",
+      "spamProtection": "Spam Koruması",
+      "spamDesc": "{{window}} saniye içinde {{count}} mesaj",
+      "ignoredChannels": "Yasaklı Kanallar",
+      "ignoredRoles": "Yasaklı Roller",
+      "footer": "Ayarları değiştirmek için /setup veya /xp-ignore komutlarını kullanın."
+    },
+    "setlevelmessage": {
+      "description": "Sunucu için özel bir seviye atlama mesajı ayarlar.",
+      "title": "Seviye Mesajı Yapılandırması",
+      "current": "Mevcut Mesaj:",
+      "default": "Varsayılan Mesaj:",
+      "variablesTitle": "Kullanılabilir Değişkenler",
+      "variablesDesc": "• **{user}**: Kullanıcıyı etiketler\n• **{level}**: Seviyeyi gösterir\n• **{guild}**: Sunucu adını gösterir",
+      "prompt": "Lütfen yeni özel seviye mesajınızı bu kanala yazın.",
+      "success": "✅ Özel seviye mesajı ayarlandı!",
+      "reset": "✅ Seviye mesajı varsayılana sıfırlandı.",
+      "cancelled": "İşlem iptal edildi.",
+      "preview": "Önizleme:",
+      "setButton": "Mesajı Ayarla",
+      "resetButton": "Sıfırla",
+      "cancelButton": "İptal",
+      "confirmTitle": "Onay Bekleniyor",
+      "confirmDesc": "Mesajınız aşağıda önizlendiği gibi görünecek. Kaydetmek istiyor musunuz?",
+      "saveButton": "Kaydet",
+      "cancelEditButton": "Vazgeç"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "name": "discord-level-bot",
+  "version": "1.0.0",
+  "description": "Advanced XP Level Bot for Discord",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "deploy": "node deploy-commands.js"
+  },
+  "dependencies": {
+    "@discordjs/builders": "^1.7.0",
+    "@discordjs/rest": "^2.2.0",
+    "better-sqlite3": "^11.1.2",
+    "canvas": "^3.2.0",
+    "chalk": "^4.1.2",
+    "cli-table3": "^0.6.5",
+    "discord-api-types": "^0.37.102",
+    "discord.js": "^14.15.3",
+    "dotenv": "^16.4.5",
+    "i18next": "^23.11.5",
+    "i18next-fs-backend": "^2.3.1",
+    "moment": "^2.30.1"
+  }
+}
