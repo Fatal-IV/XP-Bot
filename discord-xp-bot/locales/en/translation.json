@@ -1,0 +1,166 @@
+{
+  "common": {
+    "noPermission": "You do not have permission to use this command.",
+    "commandError": "An error occurred while executing this command.",
+    "timeout": "You did not respond in time. Action cancelled.",
+    "yes": "Yes",
+    "no": "No",
+    "cooldown": "Please wait {{seconds}} seconds before using this command again.",
+    "setupRequired": "⚠️ The leveling system is not set up in this server yet. An administrator needs to run `/setup` to enable commands.",
+    "channel": "Channel",
+    "role": "Role",
+    "none": "None",
+    "notSet": "Not Set"
+  },
+  "events": {
+    "guildCreate": {
+      "setupDM": "Hello! Thank you for adding me to **{{guildName}}**.\n\nTo get started, please go to your server and type `/setup` to configure the leveling system.",
+      "setupPublic": "Hello {{ownerTag}}! To get started with the leveling bot, please type `/setup`."
+    },
+    "levelUp": {
+      "message": "🎉 Congratulations, {{user}}! You have reached Level {{level}}!"
+    }
+  },
+  "commands": {
+    "rank": {
+      "description": "Shows your or another user's level rank.",
+      "options": {
+        "user": "The user whose rank you want to see."
+      },
+      "noData": "You don't have any XP yet. Start chatting to earn XP!",
+      "userNotFound": "This user could not be found in the server.",
+      "cardError": "An error occurred while generating the rank card.",
+      "isBot": "🤖 Bots do not have rank cards."
+    },
+    "top": {
+      "description": "Lists the top XP earners in the server.",
+      "options": {
+        "page": "The page number to display.",
+        "period": "Ranking period (All Time, Monthly, Weekly, Daily)."
+      },
+      "title": "{{guildName}} Server Leaderboard",
+      "footer": "Page {{page}}",
+      "noData": "No data found for page {{page}}.",
+      "allTimeTypeError": "The 'All Time' leaderboard only supports the 'Total XP' type.",
+      "heavyQueryCooldown": "This command (Monthly/Weekly/Daily) is on a server-wide cooldown. Please try again in {{seconds}} seconds."
+    },
+    "setup": {
+      "description": "Starts the initial setup for the XP bot.",
+      "title": "Setup Wizard",
+      "startPrompt": "Welcome to the XP Bot setup wizard.\n\nThis wizard will set the log channel for level-ups and the cooldown time required to earn text XP.\n\nDo you want to continue?",
+      "cancelled": "Setup cancelled.",
+      "alreadySetupTitle": "⚠️ Existing Setup Found!",
+      "alreadySetupWarning": "A level system is already set up.\n\nStarting a new setup will **permanently delete** all existing settings (Log Channel, Cooldown, Custom Message, XP Ignore lists, and Level Roles).",
+      "alreadySetupConfirm": "Do you want to proceed and delete the old settings?",
+      "currentSettings": "Current Settings:",
+      "settingsLogChannel": "Log Channel: {{channel}}",
+      "settingsCooldown": "Cooldown: {{seconds}} seconds",
+      "askChannel": "Please **mention the text channel** (e.g., #levels) where level-up messages should be sent.",
+      "invalidChannel": "That is not a valid text channel. Setup cancelled.",
+      "askCooldown": "Set the Message (Text) XP cooldown. (Recommended: {{default}} seconds).\nℹ️ **Note:** Voice XP is independent and awarded automatically every 2.5 minutes.",
+      "invalidCooldown": "That is not a valid number (minimum 10s). Setup cancelled.",
+      "success": "Setup complete! The bot is now active.",
+      "testMessage": "{{user}} {{channel}} was successfully set (This is a test message)",
+      "testMessageError": "I set the log channel, but I couldn't send the test message. Please check my permissions in that channel."
+    },
+    "setlog": {
+      "description": "Sets the channel for level up notifications.",
+      "options": {
+        "channel": "The text channel for notifications."
+      },
+      "success": "Level up log channel set to {{channel}}."
+    },
+    "setcooldown": {
+      "description": "Sets the XP cooldown time (in seconds) after gaining text XP.",
+      "options": {
+        "seconds": "The cooldown duration in seconds (min 10)."
+      },
+      "success": "Text XP cooldown set to {{seconds}} seconds."
+    },
+    "setlevelrole": {
+      "description": "Assigns a role to be given at a specific level.",
+      "options": {
+        "level": "The level to achieve.",
+        "role": "The role to be awarded."
+      },
+      "success": "Role {{role}} will now be awarded at Level {{level}}.",
+      "hierarchyError": "I cannot assign this role because it is higher than my own. Please move my bot role above the reward role."
+    },
+    "setlevel": {
+      "description": "Manually sets a user's level.",
+      "options": {
+        "user": "The user whose level you want to set.",
+        "level": "The new level you want to set."
+      },
+      "0error": "The level cannot be negative or 0.",
+      "500error": "Cannot exceed level 500.",
+      "success": "Successfully set {{user}}'s level from {{oldLevel}} to {{newLevel}}.",
+      "isBot": "You cannot set the level of a bot."
+    },
+    "resetxp": {
+      "description": "Resets ALL XP and level data for this server.",
+      "confirmMessage": "WARNING! You are about to permanently reset ALL XP and level data for ALL users in this server. This cannot be undone. Are you sure?",
+      "confirmButton": "YES, RESET EVERYTHING",
+      "cancelled": "Reset action cancelled.",
+      "loading": "Resetting...",
+      "success": "All XP and level data for this server has been reset.",
+      "error": "An error occurred while resetting XP."
+    },
+    "help": {
+      "description": "Displays a list of available commands.",
+      "options": {
+        "command": "Get detailed info on a specific command"
+      },
+      "title": "Help Menu",
+      "description": "Here is a list of all available commands for the bot.",
+      "footer": "For details on a specific command, use /help command: [command_name].",
+      "notFound": "That command was not found.",
+      "noDescription": "No description available.",
+      "publicTitle": "User Commands",
+      "adminTitle": "Admin Commands",
+      "category": "Category",
+      "adminCategory": "Admin",
+      "publicCategory": "User",
+      "options": "Parameters",
+      "noOptions": "This command does not take any parameters."
+    },
+    "xp-ignore": {
+      "description": "Disables/Enables XP for specific channels or roles.",
+      "missingSelection": "❌ Please select a **Channel** or a **Role**.",
+      "added": "✅ **{{target}}** ({{type}}) has been added to the ignore list. XP is now disabled.",
+      "removed": "✅ **{{target}}** ({{type}}) has been removed from the ignore list. XP is enabled."
+    },
+    "settings": {
+      "description": "Shows current server XP settings.",
+      "title": "⚙️ {{guildName}} - Server Settings",
+      "logChannel": "Log Channel",
+      "cooldown": "Text Cooldown",
+      "seconds": "{{sec}} Seconds",
+      "spamProtection": "Spam Protection",
+      "spamDesc": "{{count}} messages in {{window}} seconds",
+      "ignoredChannels": "Ignored Channels",
+      "ignoredRoles": "Ignored Roles",
+      "footer": "Use /setup or /xp-ignore to change settings."
+    },
+    "setlevelmessage": {
+      "description": "Sets a custom level-up message for the server.",
+      "title": "Level Up Message Configuration",
+      "current": "Current Message:",
+      "default": "Default Message:",
+      "variablesTitle": "Available Variables",
+      "variablesDesc": "• **{user}**: Mentions the user\n• **{level}**: Shows the level\n• **{guild}**: Shows the server name",
+      "prompt": "Please type your new custom level-up message in this channel.",
+      "success": "✅ Custom level-up message set!",
+      "reset": "✅ Level-up message reset to default.",
+      "cancelled": "Operation cancelled.",
+      "preview": "Preview:",
+      "setButton": "Set Message",
+      "resetButton": "Reset to Default",
+      "cancelButton": "Cancel",
+      "confirmTitle": "Confirmation Needed",
+      "confirmDesc": "Here is how your message will look. Do you want to save it?",
+      "saveButton": "Save",
+      "cancelEditButton": "Cancel"
+    }
+  }
+}
